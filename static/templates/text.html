@@ -1,0 +1,40 @@
+{%extends "base.html"  %}
+{% block content %}
+
+
+<div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Twitter Deneme</h3>
+      </div>
+
+      <div class="jumbotron">
+          <h1>Tweet</h1>
+
+              {% csrf_token %}
+              <input id="tweet" style="width: 350px;" name="tweet" type="text" />
+              <input id="rt" style = "width: 50px;" name = "rt" type="text" />
+              <input id="go" class= "btn btn-warning" type="submit" value="Gönder" />
+         <div id = "sonuc">sonuç</div>
+          <p class="lead">
+    {% for tweets in tweetler %}
+    <h3>{{tweets.tweet_text}}:{{ tweets.rt_count }}</h3><br>
+{% endfor %}
+          </p>
+      </div>
+
+       <footer class="footer">
+        <p>&copy; Company 2014</p>
+      </footer>
+
+      </div> <!-- /container -->
+{% endblock %}
+
+
+
